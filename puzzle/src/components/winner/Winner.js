@@ -1,6 +1,7 @@
+import NewGame from '../new-game/NewGame'
 import './Winner.css'
 
-const Winner =({numbers})=>
+const Winner =({numbers,reset})=>
 {
     if(!numbers.every(n=> n.value===n.index +1))
     {
@@ -10,6 +11,7 @@ const Winner =({numbers})=>
         return(
         <div className='winner'>
             <p>You won!</p>
+            <NewGame reset={reset}/>
         </div>)
     }
 }

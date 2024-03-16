@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Overlay from '../overlay/Overlay';
 import "./Board.css";
 import Tile from '../tile/Tile';
+import NewGame from '../new-game/NewGame';
+import Winner from '../winner/Winner';
 function Board() {
   const shuffle = () => 
     new Array(16)
@@ -10,7 +12,7 @@ function Board() {
       .sort(() => Math.random() -.5)
       .map((x,i)=>({value : x,index :i}))
     console.log(shuffle());
-  const [numbers,setNumbers]=useState(shuffle())
+  const [numbers,setNumbers]=useState([])
   const moveTile= tile =>{
     const i16=numbers.find(n=> n.value===16).index
     if(![i16-1,i16+1,i16-4,i16+4].includes(tile.index))
@@ -34,10 +36,10 @@ function Board() {
 
 
 }
+ 
+const reset =()=>setNumbers(shuffle())
 
-
-
-
+  useEffect(reset,[])
   
   return (
     <div className='game'>
@@ -47,8 +49,10 @@ function Board() {
           numbers.map((x,i)=>
            <Tile key={i} number={x} moveTile={moveTile}/>
           )}
-        <Winner numbers={numbers}/>
+        <Winner numbers={numbers} reset={reset}/>
+        
       </div>
+      <NewGame reset={reset}/>
     </div>
   )
 }
