@@ -46,8 +46,8 @@ function Board() {
         {
           numbers.map((x,i)=>
            <Tile key={i} number={x} moveTile={moveTile}/>
-          )
-        }
+          )}
+        <Winner numbers={numbers}/>
       </div>
     </div>
   )
