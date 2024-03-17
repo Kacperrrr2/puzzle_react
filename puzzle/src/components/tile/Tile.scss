@@ -1,0 +1,42 @@
+.number{
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background: var(--tile);
+    font-size: 50px;
+    color: white;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: left .4s ease-in-out, top .4s ease-in-out;
+  }
+  .number.correct{
+    background: var(--correct);
+  }
+  
+
+// Ustawienia
+
+$columns: 3; // liczba kolumn
+$rows: 3;    // liczba wierszy
+$size: 100px; // rozmiar pojedynczej komórki
+
+// Pętla generująca style dla każdej komórki
+@for $j from 0 through $rows - 1 {
+  @for $i from 0 through $columns - 1 {
+    .number.slot--#{$j * $rows + $i} {
+      left: calc(#{$i} * #{$size});
+      top: calc(#{$j} * #{$size});
+    }
+  }
+}
+
+
+
+// Dodatkowy styl dla wyłączonych komórek
+.number.disabled {
+  pointer-events: none;
+  background-color: transparent;
+}

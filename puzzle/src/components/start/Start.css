@@ -1,0 +1,14 @@
+.start{
+    width: 450px;
+    height: 100px;
+    padding: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: space-around;
+    margin: auto;
+  }
+.startInput{
+    margin: 30px;
+}

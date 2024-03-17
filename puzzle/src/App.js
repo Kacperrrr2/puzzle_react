@@ -8,7 +8,7 @@ function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   return (
     <div className="App" >
-      {username? (<Board username={username} selectedOption={parseInt(selectedOption)}/>): <Start setUsername={setUsername} setSelectedOption={setSelectedOption}/>}
+      {username? (<Board size={selectedOption}/>): <Start setUsername={setUsername} setSelectedOption={setSelectedOption}/>}
     
 
     

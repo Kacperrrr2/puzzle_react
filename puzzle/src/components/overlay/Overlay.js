@@ -1,8 +1,8 @@
 import './Overlay.css'
 
 
-const Overlay = () =>
-    new Array(16)
+const Overlay = ({size}) =>
+    new Array((size*size/size))
         .fill()
         .map((_,i) => <div key={i} className="overlay"/>)
 export default Overlay;
