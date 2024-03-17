@@ -19,21 +19,22 @@
 
 // Ustawienia
 
-$columns: 3; // liczba kolumn
-$rows: 3;    // liczba wierszy
-$size: 100px; // rozmiar pojedynczej komórki
+@function generateCellStyles($rows) {
+  $columns:$rows;
 
-// Pętla generująca style dla każdej komórki
-@for $j from 0 through $rows - 1 {
-  @for $i from 0 through $columns - 1 {
-    .number.slot--#{$j * $rows + $i} {
-      left: calc(#{$i} * #{$size});
-      top: calc(#{$j} * #{$size});
+  $size: 100px;
+  @for $j from 0 through $rows - 1 {
+    @for $i from 0 through $columns - 1 {
+      $styles: #{$styles}
+        '.number.slot--#{$j * $rows + $i} { \
+          left: calc(#{$i} * #{$size}); \
+          top: calc(#{$j} * #{$size}); \
+        }'; 
     }
   }
+
+  @return $styles; // Zwracanie wygenerowanych stylów
 }
-
-
 
 // Dodatkowy styl dla wyłączonych komórek
 .number.disabled {
